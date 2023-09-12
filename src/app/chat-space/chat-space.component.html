@@ -1,0 +1,64 @@
+<!-- <div class="bg-slate-400 min-w-full min-h-screen">
+  <div class="left-messages flex justify-start ml-10" *ngFor="let c of chats">
+    <div *ngIf="selectedUser">
+      <mat-card class="w-5/12 p-1 ml-1 bg-style m-2">
+        <mat-card-subtitle>
+          <span> </span>
+        </mat-card-subtitle>
+        <mat-card-content>
+          <p>{{ c }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="right-messages flex justify-end mr-10" *ngFor="let c of chats2">
+    <mat-card class="w-5/12 p-1 ml-1 sender-bg-style m-2">
+      <mat-card-subtitle>
+        <span> {{ c }} </span>
+      </mat-card-subtitle>
+      <mat-card-content>
+        <p>message</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="flex justify-center items-center fixed bottom-0 w-full">
+    <form id="message" [formGroup]="form" (ngSubmit)="onChatSubmit(form)">
+      <mat-form-field class="example-full-width w-[70%]">
+        <input matInput placeholder="Enter your message" formControlName="message" />
+        <button type="submit" matSuffix mat-icon-button aria-label="Submit">
+          <mat-icon>send</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+  </div>
+</div> -->
+
+<div id="history">
+  <div *ngFor="let chat of chats" class="mb">
+    <mat-card>
+      <mat-card-subtitle>
+        <span>{{chat.username}} (Sent: {{chat.timestamp | date:'long'}})</span>
+      </mat-card-subtitle>
+      <mat-card-content>
+        <p>{{chat.message}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<form id="message" [formGroup]="form" (ngSubmit)="onChatSubmit(form.value)">
+  <mat-form-field appearance="outline" class="fw">
+    <mat-label>{{exactUser}}</mat-label>
+    <input matInput
+                    formControlName="username"  >
+  </mat-form-field>
+    <mat-form-field appearance="outline" class="fw">
+    <mat-label>Enter Chat</mat-label>
+      <input matInput
+                      formControlName="message" >
+                      <button type="submit" matSuffix mat-icon-button aria-label="Submit">
+                        <mat-icon>send</mat-icon>
+                      </button>
+    </mat-form-field>
+</form>
